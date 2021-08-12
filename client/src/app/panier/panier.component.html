@@ -1,0 +1,124 @@
+<div *ngIf="panier.commande.length == 0 && this.cmdDone==false" class="container-panier-vide">
+  <img id="panier_vide" src="https://www.ebelieve.fr/skin/frontend/believev2/default/images/cart_icon_full.png" />
+
+  <br>
+  <h2 class="text-uppercase"> <strong>votre panier est vide !</strong></h2>
+  <br>
+  <div>
+    <button mat-stroked-button color="primary" class="text-uppercase" [routerLink]="['/films']">faire des achats</button>
+  </div>
+</div>
+
+
+<div *ngIf="panier.commande.length > 0 || this.cmdDone==true" class="container">
+
+
+  <mat-horizontal-stepper #stepper>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Panier</ng-template>
+        <div id="panier-head">
+          <h3 id="panier-title text-uppercase"> <strong>VOTRE COMMANDE</strong></h3>
+          <div>
+            <button id="btn-delete-validate" (click)="showDeletes()" mat-raised-button color="warn">{{valDelete | uppercase}}</button>
+          </div>
+        </div>
+
+
+        <div class="album">
+          <div class="wrap">
+            <div *ngFor="let produit of panier.commande" class="cdr_film">
+              <app-panier-item [isShown]="issShown" [produit]="produit"></app-panier-item>
+            </div>
+
+          </div>
+
+
+
+          <hr class="panier-line">
+
+
+          <div class="panier-total"> <strong> TOTAL COMMANDE :&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp; {{panier.getMontant()}} € </strong></div>
+
+        </div>
+
+
+        <div>
+
+          <div class="action-bottom wrap">
+            <div class="btn-action-bottom">
+              <button mat-stroked-button color="primary" [routerLink]="['/home']">CONTINUEZ VOS ACHATS</button>
+            </div>
+            <div class="btn-action-bottom">
+              <button mat-button matStepperNext *ngIf="this.auth.client" class="text-uppercase">
+                Finaliser votre commande
+              </button>
+
+              <button mat-button color="warn" disabled="true" *ngIf="!this.auth.client" class="btn disabled text-uppercase">
+                Veuillez vous connecter pour finaliser votre commande </button>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Récapitulatif commande</ng-template>
+        <div class="recap">
+
+          <h3 class="panier-title text-uppercase"> <strong>Récapitulatif de votre commande</strong></h3>
+
+          <div class="recap-cmd">
+            <div class="cont-recap">
+
+              <div *ngFor="let produit of panier.commande" class="item-achat">
+                <div class="wrap-recap">
+
+                  <div class="item-title">
+                    {{produit.nom}}
+                  </div>
+                  <div class="item-price">
+                    5€
+                  </div>
+                </div>
+
+                <hr class="panier-line-recap">
+
+              </div>
+              <div class="panier-total-recap height-2"> <strong> TOTAL COMMANDE :&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp;&ensp; {{panier.getMontant()}} € </strong></div>
+            </div>
+
+            <div class="wrap-recap">
+              <button mat-button matStepperPrevious class="text-uppercase">Retour</button>
+              <button mat-button matStepperNext class="text-uppercase" (click)="passerCommande()">Passer commande</button>
+            </div>
+
+
+          </div>
+        </div>
+
+      </form>
+    </mat-step>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Achats</ng-template>
+        <div class="merci">
+          <h3 class="panier-title"> <strong>Merci de nous avoir fait confiance, le processus pour le visionnage des films vous a été envoyé par mail </strong> </h3>
+          <div>
+            <button mat-stroked-button color="primary" class="text-uppercase" [routerLink]="['/films']">continuer vos achats</button>
+          </div>
+        </div>
+
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+
+
+
+
+  <br />
+
+
+</div>

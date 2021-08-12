@@ -1,0 +1,51 @@
+<header class="main-header">
+  <button mat-button class="backButton" *ngIf="isOnDetailAfterSearch()" (click)="goBack()">
+    <mat-icon style="color: white">keyboard_backspace</mat-icon>
+  </button>
+  <div class="logo">
+    <a routerLink="/home">STREAMOVIE</a>
+    <a class="nav-link" routerLink="/films" (click)="resetSearch()">Films</a>
+
+  </div>
+  <div class="search">
+    <input matInput name="search" type="search" placeholder="Rechercher un film..." [(ngModel)]="tmdb.searchStr" (search)="search()" (keyup)="search()">
+  </div>
+
+
+  <ul class="right-nav-links">
+
+
+    <button class="right-nav-link panier" mat-mini-fab color="primary" routerLink="/panier">
+      <mat-icon>shopping_basket</mat-icon>
+    </button>
+    <button *ngIf="this.auth.isLoggedIn()" class="right-nav-link favoris" mat-mini-fab routerLink="/favoris">
+      <mat-icon>favorite</mat-icon>
+    </button>
+
+    <li>
+      <div *ngIf="!this.auth.isLoggedIn()">
+        <button mat-mini-fab (click)="loginGoogle()" style="background: #673AB7">
+          <i class="fab fa-google"></i>
+        </button>
+      </div>
+    </li>
+    <li>
+      <div *ngIf="this.auth.isLoggedIn()" class="profil">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <img data-src="{{this.auth.getUserPhoto()}}" class="rounded float-right mr-2" alt="avatar image" style="width: auto; height: 50px;">
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/compte']">Gestion du compte</button>
+          <button mat-menu-item [routerLink]="['/home']" (click)="logout()">Se deconnecter</button>
+        </mat-menu>
+      </div>
+
+
+
+
+    </li>
+  </ul>
+
+
+
+</header>

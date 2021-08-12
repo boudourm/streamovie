@@ -1,0 +1,59 @@
+<div style="position: relative">
+  <div class="poster">
+    <img src="http://image.tmdb.org/t/p/w300_and_h450_bestv2/{{this.movie.poster_path}}">
+  </div>
+  <div class="overlay">
+    <div class="container-action">
+
+      <div>
+
+        <div>
+          <h5 class="title">{{ this.movie.title }}</h5>
+        </div>
+
+
+
+        <div class="vertical-align">
+          <div class="synopsis">
+            <p class="synopsisBtn">{{this.shortOverview}}</p>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <div class="btn-more-info">
+        <button mat-button [routerLink]="['/film',movie.id,movie.title]">Plus d'informations</button>
+      </div>
+
+      <div class="actions">
+
+
+
+        <div class="btn_add_panier">
+          <a *ngIf="!this.panier.existeDejaDansPanier(this.movie.id)" (click)="ajoutPanier(); this.snackBar.openSnackBarAddPanier();" matTooltip="Ajouter au panier">
+            <mat-icon>shopping_cart</mat-icon>
+          </a>
+          <a *ngIf="this.panier.existeDejaDansPanier(this.movie.id)" (click)="supprimerArticleDuPanier(); this.snackBar.openSnackBarDeletePanier();" style="color: #0984e3" matTooltip="Ce film est déjà dans votre panier">
+            <mat-icon>shopping_cart</mat-icon>
+          </a>
+        </div>
+        <div class="btn_add_favoris">
+          <a *ngIf="!this.auth.isLoggedIn()" matTooltip="Veuillez-vous connecter pour ajouter ce film à vos favoris" matTooltipPosition="below">
+            <mat-icon>favorite</mat-icon>
+          </a>
+          <a *ngIf="this.auth.isLoggedIn() && !this.thisMovieIsInMyFavorite()" (click)="this.ls.ajoutListe(this.movie.id); this.snackBar.openSnackBarAddFavorite();" matTooltip="Ajouter aux favoris" matTooltipPosition="below">
+            <mat-icon>favorite</mat-icon>
+          </a>
+          <a *ngIf="this.auth.isLoggedIn() && this.thisMovieIsInMyFavorite()" (click)="this.ls.removeListe(this.movie.id); this.snackBar.openSnackBarDeleteFavorite()" style="color: #d63031;" matTooltip="Ce film est déja dans vos favoris"
+            matTooltipPosition="below">
+            <mat-icon>favorite</mat-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

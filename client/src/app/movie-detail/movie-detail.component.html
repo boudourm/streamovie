@@ -1,0 +1,136 @@
+<div class="contenair">
+  <div class="contenair_backdrop" id="contenair_backdrop">
+    <div class="backdrop" id="backdrop">
+    </div>
+    <div *ngIf="this.movie && this.cast" class="column">
+      <div class="gl_poster">
+        <div class="poster">
+          <img src="{{this.posterUrl}}" alt="">
+        </div>
+
+      </div>
+
+      <div class="header_poster">
+        <div class="title">
+          {{this.movie.title}}
+        </div>
+
+        <div class="info">
+
+          {{this.movie.release_date}} | {{this.movie.genres[0].name}} | Vote: {{this.movie.vote_average*10}}%
+
+
+        </div>
+
+        <div class="overview">
+          <h3>Synopsis</h3>
+          {{this.movie.overview}}
+        </div>
+        <div style="display: flex">
+          <div class="cast">
+            <h4>Casting</h4>
+            <div *ngFor="let c of this.cast">
+              {{c.name}}
+              <span style="color #202124;   font-style: italic; ">/ {{c.character}}</span>
+            </div>
+          </div>
+          <div class="actions">
+            <div class="btn_add_panier">
+              <a *ngIf="!this.panier.existeDejaDansPanier(this.movie.id)" (click)="ajoutPanier(); this.snackBar.openSnackBarAddPanier();" matTooltip="Ajouter au panier">
+                <mat-icon>shopping_cart</mat-icon>
+              </a>
+              <a *ngIf="this.panier.existeDejaDansPanier(this.movie.id)" (click)="supprimerArticleDuPanier(); this.snackBar.openSnackBarDeletePanier();" style="color: #0984e3" matTooltip="Ce film est déjà dans votre panier">
+                <mat-icon>shopping_cart</mat-icon>
+              </a>
+            </div>
+            <div class="btn_add_favoris">
+              <a *ngIf="!this.auth.isLoggedIn()" matTooltip="Veuillez-vous connecter pour ajouter ce film à vos favoris" matTooltipPosition="below">
+                <mat-icon>favorite</mat-icon>
+              </a>
+              <a *ngIf="this.auth.isLoggedIn() && !this.thisMovieIsInMyFavorite()" (click)="this.ls.ajoutListe(this.movie.id); this.snackBar.openSnackBarAddFavorite();" matTooltip="Ajouter aux favoris" matTooltipPosition="below">
+                <mat-icon>favorite</mat-icon>
+              </a>
+              <a *ngIf="this.auth.isLoggedIn() && this.thisMovieIsInMyFavorite()" (click)="this.ls.removeListe(this.movie.id); this.snackBar.openSnackBarDeleteFavorite()" style="color: #d63031;" matTooltip="Ce film est déja dans vos favoris"
+                matTooltipPosition="below">
+                <mat-icon>favorite</mat-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="ctn">
+
+    <div class="container_presse">
+      <h1>
+        Critique de la presse
+      </h1>
+      <div class="wrap">
+
+        <section class="section_presse">
+          <div class="header_presse">
+            <div class="score_presse" style="background-color: #2ecc71">
+              75
+            </div>
+            <h2>Cahiers du Cinéma</h2>
+          </div>
+          <div class="critique">
+            En un geste d’une grande pureté, Ad Astra semble avant tout dresser la carte astronomique de ce lyrisme abyssal qui doit si peu, chez Gray, au romantisme affolé et flamboyant des cinéastes saturniens évaporés sous de grands soleils noirs
+            (Herzog, Coppola encore).
+          </div>
+        </section>
+
+        <section class="section_presse">
+          <div class="header_presse">
+            <div class="score_presse" style="background-color:#27ae60">
+              95
+            </div>
+            <h2>Le Monde</h2>
+          </div>
+          <div class="critique">
+            Un film d'une richesse somptueuse (...) une comédie burlesque souvent drôle, et surtout une apologie de la création individuelle d'une vigueur inattendue (...) La qualité de l'image de synthèse atteint dans Ratatouille des sommets sans
+            précédent.
+          </div>
+        </section>
+
+        <section class="section_presse">
+          <div class="header_presse">
+            <div class="score_presse" style="background-color:#e67e22">
+              50
+            </div>
+            <h2>Télérama</h2>
+          </div>
+          <div class="critique">
+            Cela faisait longtemps qu'un film n'avait pas célébré avec autant d'allant et de kitsch éclatant la France, sa cuisine, ses bons produits et Paris, capitale du goût, où la Tour Eiffel clignote, la Seine miroite, les quais sont propices
+            aux confidences de minuit.
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <div *ngIf="this.similarMovie" class="container_similar">
+      <h1>Films similaire</h1>
+      <div class="ctn_smv">
+        <div *ngFor="let m of similarMovie">
+          <section class="section_similar" style="cursor: pointer">
+            <div class="poster-sim" [routerLink]="['/film',m.id,m.title]">
+              <img [src]="getPosterURL(m)" alt="">
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
+
+<div class="panier-hover">
+  <app-panier-over>
+  </app-panier-over>
+</div>

@@ -1,0 +1,110 @@
+.nav-link {
+  border-bottom: 1px solid;
+  border-color: #202124;
+  border-radius: 1px;
+  transition: 0.5s;
+  margin-left: 50%;
+}
+
+.nav-link:hover {
+  border-bottom: 1px solid;
+  border-color: white;
+}
+
+.search {
+  position: absolute;
+  width: 78.5vw;
+  text-align: center;
+  top: 22px;
+}
+
+ul {
+  padding-right: 15%;
+}
+
+.btn_co {
+  border: solid 1px;
+  padding: 5px;
+  border-color: white;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+i {
+  font-size: 20px;
+}
+
+.logo {
+  display: flex;
+  z-index: 2;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.main-header a {
+  text-decoration: none;
+  color: white;
+}
+
+.main-header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  width: 100vw;
+  padding: 0 10vw;
+  color: black;
+  z-index: 1;
+  transition: .4s ease-out;
+  z-index: 200;
+  background: #202124;
+}
+
+.left-nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.right-nav-link {
+  margin-right: 25px;
+}
+
+.right-nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.profil {
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.profil img {
+  border-radius: 50%;
+}
+
+.panier, .favoris {
+  transition: 0.5s;
+}
+
+.panier:hover {
+  background: white;
+  color: #3f51b5;
+}
+
+.favoris:hover {
+  background: white;
+  color: #ff4081;
+}
+
+.backButton {
+  position: absolute;
+  left: 0%;
+}

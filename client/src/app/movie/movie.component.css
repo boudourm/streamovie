@@ -1,0 +1,170 @@
+h5 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.poster img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.overlay:hover {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  color: white;
+  font-size: 125%;
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 2%;
+  text-align: center;
+  padding-top: 5%;
+}
+
+.actions {
+  display: block;
+  width: max-content;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  margin: 0 auto 5%;
+}
+
+.synopsis {
+  padding: 3%;
+  top: 20%;
+  text-align: center;
+  font-size: 100%;
+  height: 200px;
+  color: white;
+}
+
+.actions {
+  display: flex;
+}
+
+.actions .btn_add_panier {
+  color: black;
+  margin-right: 20px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.actions .btn_info {
+  color: black;
+  margin-right: 20px;
+  text-align: center;
+  z-index: 1000;
+  cursor: pointer;
+  outline: none;
+}
+
+.actions .btn_add_favoris {
+  line-height: 2rem !important;
+  color: black;
+  text-align: center;
+  z-index: 1000;
+  cursor: pointer;
+  outline: none;
+}
+
+.viewAsList {}
+
+.viewAsPoster {
+  max-height: 514px;
+}
+
+.movie {
+  max-height: 514px;
+  color: #ffff;
+}
+
+.actions a {
+  z-index: 10;
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 68px;
+  text-align: center;
+  vertical-align: middle;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.icon {
+  color: #fff;
+  text-align: center;
+  line-height: 2rem !important;
+}
+
+.icon .mat-icon {
+  font-size: 2vw;
+}
+
+.actions a:hover {
+  color: #202124;
+}
+
+.actions a::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.5, 0.5);
+  transition: 0.4s;
+}
+
+.actions a:hover::after {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.vertical-align {
+  display: flex;
+  align-items: center;
+}
+
+.btn-more-info {
+  text-align: center;
+  position: absolute;
+  bottom: 25%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.btn-more-info button {
+  cursor: pointer;
+  color: #fff;
+  transition: 0.4s;
+}
+
+.btn-more-info button:hover {
+  color: #FBD62A;
+}

@@ -1,0 +1,68 @@
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.btn-delete {
+  position: absolute;
+  bottom: 1.5%;
+  right: 0%;
+  left: 3%;
+  z-index: 100;
+  cursor: pointer;
+  width: 94%;
+  background-color: #ff0000;
+  color: white;
+  opacity: 90%;
+}
+
+.btn-delete:hover {
+  opacity: 80%;
+}
+
+#image-movie {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 30px;
+  padding: 3%;
+  height: 300px;
+  width: 188px;
+}
+
+#movie {
+  text-align: center;
+}
+
+#product_title {
+  padding: 0% 6% 0% 0%;
+  font-size: 125%;
+  width: 188px;
+}
+
+h5 {
+  margin: 0 0 25px;
+}
+
+img {
+  cursor: pointer;
+}
+
+button {
+  min-width: 0;
+  padding: 0px 8px;
+}
+
+@media screen and (max-width: 500px) {
+  #image-movie {
+    width: 70%;
+    height: 70%;
+  }
+
+  #product_title {
+    padding: 0% 10% 0% 10%;
+    font-size: 110%;
+    width: 100px;
+  }
+}

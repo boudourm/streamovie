@@ -1,0 +1,111 @@
+.row {
+  flex-wrap: unset;
+  overflow: scroll;
+}
+
+.listMovieGenre {
+  padding-top: 3%;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  max-width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.error-research {
+  margin-left: 10%;
+}
+
+.genreTitle {
+  font-size: 175%;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: 100%;
+}
+
+.viewAsList {
+  width: 100%;
+}
+
+.mat-list-item {
+  height: max-content !important;
+}
+
+.panier-hover {
+  display: block;
+  max-height: 20em;
+  position: -webkit-sticky;
+  position: fixed;
+  bottom: 0vh;
+  right: 0vw;
+  z-index: 1000;
+}
+
+.filmsGenreContainer {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80vw;
+}
+
+.filmsGenreContainer>div {
+  border-color: aliceblue;
+  border-width: 1px;
+  border-style: solid;
+  padding: 0 1%;
+}
+
+.genre {
+  width: max-content;
+  margin: 1px;
+}
+
+.genresChoice {
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+  border: none;
+  justify-content: center;
+  margin: auto;
+}
+
+.btnGenre {
+  border: solid 1px rgba(0, 0, 0, .12);
+  border-radius: 5px;
+  margin: 1px;
+}
+
+.recheche {
+  margin-left: 10%;
+  font-size: xx-large;
+  font-style: oblique;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.filtres {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+mat-expansion-panel {
+  box-shadow: none !important;
+}
+
+mat-expansion-panel-header {
+  width: max-content;
+}
+
+.ifFilter {
+  display: none;
+}
+
+.typeView {
+  position: absolute;
+  right: 0;
+  transform: translate(-10%, 10%);
+}

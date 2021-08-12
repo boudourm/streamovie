@@ -1,0 +1,44 @@
+<div class="lineMovie">
+  <div class="movieDetail moviePoster">
+    <img alt="{{'Poster de ' + movie.title}}" *ngIf="movie.poster_path!==null" [src]="poster_path + movie.poster_path">
+    <img src="/src/assets/ImageNotFound.png" *ngIf="movie.poster_path===null" alt="Image not found">
+  </div>
+  <div class="movieDetail">
+    <p>{{movie.title}}</p>
+  </div>
+  <div class="movieDetail">
+    <p class="button-gender" *ngFor="let genre of (movie.genre_ids | idToGenre: tmbd.genres)">{{genre}}</p>
+  </div>
+  <div class="movieDetail">
+    <p>{{movie.release_date | date: 'd/MM/yyyy'}}</p>
+  </div>
+  <div class="movieDetail movieRate">
+    <p class="rate" [ngStyle]="{'backgroundColor': 'hsl('+movie.vote_average*12+', 100%, 50%)'}">{{movie.vote_average}}</p>
+  </div>
+  <div class="btn-more-info">
+    <mat-icon *ngIf="movie.video">ondemand_video</mat-icon>
+    <button mat-button [routerLink]="['/film',movie.id,movie.title]" (click)="setSearch()">Plus d'informations</button>
+  </div>
+  <div class="actions">
+    <div class="btn_add_panier">
+      <a *ngIf="!this.panier.existeDejaDansPanier(this.movie.id)" (click)="ajoutPanier(); this.snackBar.openSnackBarAddPanier();" matTooltip="Ajouter au panier">
+        <mat-icon>shopping_cart</mat-icon>
+      </a>
+      <a *ngIf="this.panier.existeDejaDansPanier(this.movie.id)" (click)="supprimerArticleDuPanier(); this.snackBar.openSnackBarDeletePanier();" style="color: #0984e3" matTooltip="Ce film est déjà dans votre panier">
+        <mat-icon>shopping_cart</mat-icon>
+      </a>
+    </div>
+    <div class="btn_add_favoris">
+      <a *ngIf="!this.auth.isLoggedIn()" matTooltip="Veuillez-vous connecter pour ajouter ce film à vos favoris" matTooltipPosition="below">
+        <mat-icon>favorite</mat-icon>
+      </a>
+      <a *ngIf="this.auth.isLoggedIn() && !this.thisMovieIsInMyFavorite()" (click)="this.ls.ajoutListe(this.movie.id); this.snackBar.openSnackBarAddFavorite();" matTooltip="Ajouter aux favoris" matTooltipPosition="below">
+        <mat-icon>favorite</mat-icon>
+      </a>
+      <a *ngIf="this.auth.isLoggedIn() && this.thisMovieIsInMyFavorite()" (click)="this.ls.removeListe(this.movie.id); this.snackBar.openSnackBarDeleteFavorite()" style="color: #d63031;" matTooltip="Ce film est déja dans vos favoris"
+        matTooltipPosition="below">
+        <mat-icon>favorite</mat-icon>
+      </a>
+    </div>
+  </div>
+</div>

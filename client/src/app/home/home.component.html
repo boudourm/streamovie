@@ -1,0 +1,128 @@
+<div id="home-container">
+  <div class="contenair_backdrop" id="contenair_backdrop">
+
+    <div class="container" style="margin: 0 auto;">
+      <div class="button" (click)='shiftLeft(); '>
+        <mat-icon>keyboard_arrow_left</mat-icon>
+      </div>
+      <div class="cards-wrapper">
+        <ul class="cards__container">
+          <li [routerLink]="['/film',movie.id,movie.title]" class="box" *ngFor="let movie of fiveFirstLoadedMovies; let i = index" [style.backgroundImage]="'url(http://image.tmdb.org/t/p/w300_and_h450_bestv2/'+movie.poster_path+')'"
+            [style.backgroundSize]="'contain'" [style.backgroundRepeat]="'no-repeat'" [id]="movie.id"></li>
+
+        </ul>
+
+      </div>
+
+      <div class="button" (click)='shiftRight(); '>
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </div>
+    </div>
+
+    <div class="backdrop" id="backdrop">
+    </div>
+
+
+    <div id="logo-container-band" *ngIf="this.currentMovie">
+      <div class="logo" style="margin-top:2%!important; margin-bottom:-10px!important;">
+        <a href="http://localhost:4200/home" [routerLink]="['/film',this.currentMovie.id,this.currentMovie.title]">{{this.currentMovie.title}}</a>
+      </div>
+    </div>
+
+
+
+    <!--RATING
+    <div class="rating" style="margin-top:-20px !important;">
+
+      <input type="radio" name="rating" id="r1" disabled="true">
+      <label for="r1"></label>
+
+      <input type="radio" name="rating" id="r2" disabled="true">
+      <label for="r2"></label>
+
+      <input type="radio" name="rating" id="r3" disabled="true">
+      <label for="r3"></label>
+
+      <input type="radio" name="rating" id="r4" disabled="true">
+      <label for="r4"></label>
+
+      <input type="radio" name="rating" id="r5" disabled="true">
+      <label for="r5"></label>
+
+    </div>
+    -->
+
+    <br><br><br>
+    <!--Movie Details -->
+
+
+    <div class="wrapper" *ngIf="this.currentMovie" style="background-image: {{currentMovie.backdrop_path}}">
+      <div class="main_card" style="height: 50% !important;">
+        <div class="card_left" tyle="height: 100000px !important;">
+          <div class="card_datails">
+            <h1 style="font-size: 180%; font-weight: 900; font-max-size: 50px !important; margin-top: 10px;">{{this.currentMovie.title}}</h1>
+            <div class="card_cat">
+              <p class="year">{{this.currentMovie.release_date}}</p>
+              <!--<p class="time">☻ {{this.currentMoviePopularity}}%</p>-->
+            </div>
+            <br>
+            <a class="button-gender" *ngFor="let gender of currentMovieGenres; let i = index">{{gender.name}}</a>
+            <div class="title-syn">
+              Synopsis
+            </div>
+            <p class="disc">{{this.currentMovieSynopsis}}</p>
+            <div class="social-btn">
+              <!-- WATCH TRAILER-->
+              <div>
+                <button (click)='shiftLeft(); '>
+                  <i c></i>◄</button>
+                <!-- GET-->
+                <button (click)='shiftRight(); '>
+                  <i></i>►</button>
+              </div>
+              <div class="actions">
+                <div class="btn_add_panier">
+                  <a *ngIf="!this.panier.existeDejaDansPanier(this.currentMovie.id)" (click)="ajoutPanier(); this.snackBar.openSnackBarAddPanier();" matTooltip="Ajouter au panier">
+                    <mat-icon>shopping_cart</mat-icon>
+                  </a>
+                  <a *ngIf="this.panier.existeDejaDansPanier(this.currentMovie.id)" (click)="supprimerArticleDuPanier(); this.snackBar.openSnackBarDeletePanier();" style="color: #0984e3" matTooltip="Ce film est déjà dans votre panier">
+                    <mat-icon>shopping_cart</mat-icon>
+                  </a>
+                </div>
+                <div class="btn_add_favoris">
+                  <a *ngIf="!this.auth.isLoggedIn()" matTooltip="Veuillez-vous connecter pour ajouter ce film à vos favoris" matTooltipPosition="below">
+                    <mat-icon>favorite</mat-icon>
+                  </a>
+                  <a *ngIf="this.auth.isLoggedIn() && !this.thisMovieIsInMyFavorite()" (click)="this.ls.ajoutListe(this.currentMovie.id); this.snackBar.openSnackBarAddFavorite();" matTooltip="Ajouter aux favoris" matTooltipPosition="below">
+                    <mat-icon>favorite</mat-icon>
+                  </a>
+                  <a *ngIf="this.auth.isLoggedIn() && this.thisMovieIsInMyFavorite()" (click)="this.ls.removeListe(this.currentMovie.id); this.snackBar.openSnackBarDeleteFavorite()" style="color: #d63031;"
+                    matTooltip="Ce film est déja dans vos favoris" matTooltipPosition="below">
+                    <mat-icon>favorite</mat-icon>
+                  </a>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <br>
+    </div>
+
+    <br>
+    <!-- NEVER REMOVE THESE 3 -->
+    <h4 id="middle-id-value" style="display: none; margin:auto;width:50%;"></h4>
+    <h5 id="wait-condition-span" style="display: none;">0</h5>
+    <h1 style="display: none; " *ngIf="this.currentMovie">{{this.currentMovie.title}}</h1>
+  </div>
+</div>
+
+
+<div class="panier-hover">
+  <app-panier-over>
+  </app-panier-over>
+</div>

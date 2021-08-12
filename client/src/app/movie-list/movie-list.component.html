@@ -1,0 +1,100 @@
+<div *ngIf="loading">
+  <mat-spinner [diameter]="100" [strokeWidth]="3"></mat-spinner>
+</div>
+<div *ngIf="!loading" style="margin-bottom: 300px">
+  <div class="filtres" >
+    <mat-expansion-panel [ngClass]="{'ifFilter' : tmdb.searching}" style="padding-top: 1%; padding-left: 5%">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Filtrer
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-button-toggle-group class="genresChoice" #genresChoice="matButtonToggleGroup" multiple>
+        <mat-button-toggle (click)="searchOnGenre(genresChoice.value, 1)" class="btnGenre" value={{genre.id}} *ngFor="let genre of tmdb.genres.genres">{{genre.name}}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </mat-expansion-panel>
+
+
+    <div *ngIf="tmdb.searching || filter" class="typeView">
+      <mat-button-toggle-group #group="matButtonToggleGroup">
+        <mat-button-toggle (click)="viewAsList=true" aria-label="View list">
+          <mat-icon>view_list</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle (click)="viewAsList=false" aria-label="View module">
+          <mat-icon>view_module</mat-icon>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  </div>
+
+  <div *ngIf="!tmdb.searching && !filter">
+
+
+    <div class="filmsGenreContainer">
+      <div *ngFor="let filmsOfGenre of filmsByGenres, let i=index">
+
+        <div class="genreTitle">{{tmdb.genres.genres[i].name}}</div>
+        <owl-carousel [options]="carouselOptions">
+
+          <div *ngFor="let movie of filmsOfGenre.results" class="movieContainer">
+            <app-movie [movie]="movie" class="movie item"></app-movie>
+          </div>
+        </owl-carousel>
+      </div>
+    </div>
+
+  </div>
+  <div *ngIf="tmdb.searching">
+    <h4 class="recheche">Recherche : {{tmdb.searchStr}}</h4>
+    <mat-grid-list cols="5" rowHeight="425px" gutterSize="10" *ngIf="tmdb.resultResearch!=[] && !viewAsList" style="margin: 0px 10%;">
+      <mat-grid-tile *ngFor="let film of tmdb.resultResearch" class="viewAsPoster" style="margin:0">
+        <app-movie class="movie" [movie]="film"></app-movie>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-list *ngIf="tmdb.resultResearch!=[] && viewAsList">
+      <mat-list-item *ngFor="let film of tmdb.resultResearch">
+        <app-movie-as-list [movie]="film" class="viewAsList"></app-movie-as-list>
+      </mat-list-item>
+    </mat-list>
+    <div class="error-research">
+      <h3 *ngIf="tmdb.resultResearch.length==0">Désolé nous n'avons aucun résultat pour votre recherche...</h3>
+    </div>
+  </div>
+
+  <div *ngIf="filter && !tmdb.searching">
+    <div *ngIf="filtreListMovie.results==[]">
+      <p style="text-align: center">
+        Aucun résultats
+      </p>
+    </div>
+    <mat-grid-list style="margin: 0 10%" cols="5" rowHeight="425px" gutterSize="5" *ngIf="filtreListMovie.results!=[] && !viewAsList">
+      <mat-grid-tile *ngFor="let film of filtreListMovie.results" class="viewAsPoster">
+        <app-movie class="movie" [movie]="film"></app-movie>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <mat-list *ngIf="filtreListMovie.results!=[] && viewAsList">
+      <mat-list-item *ngFor="let film of filtreListMovie.results">
+        <app-movie-as-list [movie]="film" class="viewAsList"></app-movie-as-list>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div style="text-align: center" *ngIf="filter && !tmdb.searching">
+    <button [disabled]="page==1" mat-button (click)="searchOnGenre(genresChoice, 1)">
+      <mat-icon>first_page</mat-icon>
+    </button>
+    <button [disabled]="page==1" mat-button (click)="searchOnGenre(genresChoice.value, page-1)">
+      <mat-icon>navigate_before</mat-icon>
+    </button>
+    <button disabled>{{page}}</button>
+    <button [disabled]="page==filtreListMovie.total_pages" mat-button (click)="searchOnGenre(genresChoice.value, page+1)">
+      <mat-icon>navigate_next</mat-icon>
+    </button>
+    <button [disabled]="page==filtreListMovie.total_pages" mat-button (click)="searchOnGenre(genresChoice.value, filtreListMovie.total_pages)">
+      <mat-icon>last_page</mat-icon>
+    </button>
+  </div>
+</div>
+<div class="panier-hover">
+  <app-panier-over>
+  </app-panier-over>
+</div>

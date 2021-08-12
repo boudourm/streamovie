@@ -1,0 +1,165 @@
+.txt-weak {
+  color: rgba(0, 0, 0, 0.4);
+  margin: 0 16px;
+}
+
+.id {
+  margin-right: 10px;
+}
+
+.header {
+  display: flex;
+  margin-left: 20px;
+}
+
+.header-item {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.opposite {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 50px;
+  font-weight: bold;
+}
+
+.montant {
+  margin-left: 50px;
+}
+
+.info, .wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cmd {
+  height: 40vh;
+  margin-bottom: 75px;
+  padding-right: 50px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+#img-upload {
+  width: 100%;
+}
+
+.btn-ContinuerAchat {
+  border-radius: 12px 0 12px 0;
+  background: #d34836;
+  border: none;
+  color: #fff;
+  font: bold 12px Verdana;
+  padding: 6px 0 6px 0;
+}
+
+.panier-title {
+  margin-left: 2%;
+}
+
+.image-movie {
+  width: 100%;
+  height: 100%;
+}
+
+.cdr_film {
+  padding: 0% 2%;
+}
+
+.btn-delete-validate {
+  display: inline-block;
+  /*margin-left:88%;*/
+  margin-bottom: 2%;
+  width: 10%;
+  float: left;
+  background-color: #ff0000;
+}
+
+.panier-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 120%;
+}
+
+.panier-line {
+  background-color: #a6a4a8;
+  border-bottom: #a6a4a8;
+  border-top: #a6a4a8;
+  height: 2px;
+  width: 98%;
+  z-index: 100;
+}
+
+.container {
+  margin-left: 18%;
+  margin-right: 18%;
+  height: 100%;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.album {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.item-achat {
+  padding: 5px 10px;
+}
+
+.date {
+  width: 150px;
+}
+
+.wrap-recap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.height-2 {
+  margin-bottom: 25px;
+}
+
+.cont-recap {
+  background: rgba(0, 0, 0, 0.06);
+  padding-top: 10px;
+}
+
+.recap {
+  padding: 0 10%;
+}

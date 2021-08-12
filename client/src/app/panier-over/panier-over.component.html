@@ -1,0 +1,52 @@
+<div class="card">
+
+  <div class="header" (click)="panier.open = !panier.open">
+    <div class="header-info">
+      <mat-icon>shopping_basket</mat-icon>
+      <div class="title">
+        <h4>Panier</h4>
+      </div>
+      <div class="qt" *ngIf="this.panier.getNombresArticles()>1">
+        {{this.panier.getNombresArticles()}} Produits
+      </div>
+      <div class="qt" *ngIf="this.panier.getNombresArticles()<2">
+        {{this.panier.getNombresArticles()}} Produit
+      </div>
+    </div>
+    <div class="arrow">
+      <mat-icon *ngIf="panier.open">keyboard_arrow_down</mat-icon>
+      <mat-icon *ngIf="!panier.open">keyboard_arrow_up</mat-icon>
+    </div>
+
+  </div>
+  <div class="line"></div>
+  <div class="listArticles" *ngIf="panier.commande.length!=0" [ngClass]="panier.open ? 'listArticles' : 'close'">
+    <div *ngFor="let article of panier.commande" class="articleContainer">
+
+      <div class="container-img">
+        <img class="poster" [src]="article.photo">
+      </div>
+
+      <div class="block">
+        <div class="title-sec">
+          {{article.nom}}
+        </div>
+
+        <div class="action">
+          <button mat-icon-button color="warn" (click)="this.panier.supprimerArticleDuPanier(article)">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="footerPanierHover">
+    <div class="title">
+      <h4>Total: {{this.panier.getMontant()}}€</h4>
+    </div>
+    <div>
+      <button mat-flat-button *ngIf="this.panier.getNombresArticles()>0" routerLink="/panier">Commander</button>
+    </div>
+  </div>
+</div>

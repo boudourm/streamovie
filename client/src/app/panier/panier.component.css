@@ -1,0 +1,140 @@
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
+}
+
+.btn-ContinuerAchat {
+  border-radius: 12px 0 12px 0;
+  background: #d34836;
+  border: none;
+  color: #fff;
+  font: bold 12px Verdana;
+  padding: 6px 0 6px 0;
+}
+
+#panier-title {
+  margin-left: 2%;
+}
+
+.image-movie {
+  width: 100%;
+  height: 100%;
+}
+
+.cdr_film {
+  padding: 0% 0.5% 0% 1.5%;
+}
+
+#panier-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 120%;
+}
+
+.panier-line {
+  background-color: #a6a4a8;
+  border-bottom: #a6a4a8;
+  border-top: #a6a4a8;
+  height: 2px;
+  width: 98%;
+  z-index: 100;
+}
+
+.panier-total {
+  margin-top: 2%;
+  text-align: right;
+  margin-bottom: -2%;
+  font-size: 120%;
+  padding: 10px;
+}
+
+.container {
+  margin-left: 18%;
+  margin-right: 18%;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
+.album {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.btn-action-bottom {
+  margin-right: 10px;
+}
+
+.action-bottom {
+  margin-top: 40px;
+}
+
+.container-panier-vide {
+  margin: 5%;
+  text-align: center;
+}
+
+.item-achat {
+  padding: 5px 10px;
+}
+
+.recap-cmd {
+  text-align: center;
+  padding: 10px;
+}
+
+.wrap-recap {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.panier-line-recap {
+  width: 99%;
+}
+
+.height-2 {
+  margin-bottom: 25px;
+}
+
+.cont-recap {
+  background: rgba(0, 0, 0, 0.06);
+  padding-top: 10px;
+}
+
+.panier-total-recap {
+  text-align: right;
+  font-size: 100%;
+  padding: 10px;
+}
+
+.recap {
+  padding: 0 20%;
+}
+
+#panier_vide {
+  width: 100%;
+  max-width: 200px;
+}
+
+@media screen and (max-width: 600px) {
+  #panier_vide {
+    max-width: 100px;
+  }
+
+  #panier-head {
+    font-size: 80%;
+  }
+}
+
+.merci {
+  text-align: center;
+}

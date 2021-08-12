@@ -1,0 +1,13 @@
+<div id="movie">
+  <div id="image-movie">
+    <img [routerLink]="['/film',produit.id,produit.nom]" src="{{this.produit.photo}}" />
+    <button *ngIf="isShown" (click)="supp()" class="btn-delete" mat-raised-button>
+      <mat-icon>delete_forever</mat-icon>
+    </button>
+    <br>
+    <div id="product_title">
+      <h5> {{this.produit.nom}} </h5>
+    </div>
+  </div>
+
+</div>

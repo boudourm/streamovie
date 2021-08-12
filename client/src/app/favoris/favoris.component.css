@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  margin-left: 10%;
+  margin-right: 15%;
+  min-height: 95vh;
+}
+
+.container-favoris {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movieContainer {
+  position: relative;
+  margin-right: 5%;
+  width: 15vw;
+  margin-bottom: 10px;
+}
+
+.movie {
+  margin-right: 2%;
+}
+
+.panier-hover {
+  display: block;
+  max-height: 20em;
+  position: -webkit-sticky;
+  position: fixed;
+  bottom: 0vh;
+  right: 0vw;
+  z-index: 1000;
+}
+
+h3 {
+  color: rgba(0, 0, 0, 0.5);
+}

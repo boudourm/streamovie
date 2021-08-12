@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Films favoris :</h1>
+
+  <div *ngIf="this.auth.isLoggedIn()" class="container-favoris">
+    <div *ngFor="let movie of this.liste.filmsFavoris" class="movieContainer">
+      <app-movie [movie]="movie"></app-movie>
+      <!--  <button (click)="this.removeFilm(movie.id)">DELETE</button> -->
+    </div>
+  </div>
+
+
+  <div *ngIf="this.liste.getNombresDeFilmsFavoris()==0" class="container-pas-favoris">
+    <h3>Vous n'avez aucun films favoris</h3>
+  </div>
+
+
+
+</div>
+<div *ngIf="this.auth.isLoggedIn() && this.liste.getNombresDeFilmsFavoris()>0" class="panier-hover">
+  <app-panier-over>
+  </app-panier-over>
+</div>

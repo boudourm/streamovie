@@ -1,0 +1,71 @@
+<div class="container">
+  <h1>Gestion du compte de {{auth.getUserName()}} </h1>
+  <div class="info">
+    <div class="profil">
+      <mat-card>
+        <mat-card-header>
+          <img mat-card-avatar [src]="auth.getUserPhoto()">
+          <mat-card-title>{{auth.getUserName()}}</mat-card-title>
+          <mat-card-subtitle>Email : {{auth.getUserEmail()}}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
+    <div class="cmd">
+
+      <mat-card style="height: 100%; overflow: auto; width: 100%">
+        <mat-card-header>
+          <mat-card-title style="text-align: center">Historique des commandes </mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="this.com.factureWithName && this.com.factureWithName.length > 0">
+          <div class="header">
+            <div class="header-item">
+              No
+            </div>
+            <div class="header-item date">
+              Date
+            </div>
+            <div class="opposite">
+              <div style="width: 5px; height: 1px">
+
+              </div>
+              <div class="opposite-item">
+                Montant
+              </div>
+            </div>
+          </div>
+          <mat-accordion>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngFor="let facture of com.factureWithName; let id = index">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="id">
+                    {{id+1}}
+                  </div>
+                  <div class="date">
+                    {{facture.date}}
+                  </div>
+                  <div class="montant">
+                    {{facture.films.length*5}} €
+                  </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p *ngFor="let name of facture.films">{{name}}</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+        </mat-card-content>
+
+        <mat-card-content *ngIf="this.com.factureWithName && this.com.factureWithName.length == 0">
+          <span class="txt-weak">Vous n'avez passé aucune commande</span>
+        </mat-card-content>
+
+      </mat-card>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <button mat-raised-button color="warn" (click)="this.auth.deleteClient(); this.liste.deleteAllFavoris()" [routerLink]="['/home']">CLÔTURER MON COMPTE</button>
+
+</div>
